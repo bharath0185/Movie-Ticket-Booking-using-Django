@@ -1,0 +1,24 @@
+<!-- movie/templates/movie/screening_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Screening List</title>
+</head>
+<body>
+    <h1>Screening List</h1>
+    <ul>
+        {% for screening in screenings %}
+            <li>
+                <h2>{{ screening.movie.title }}</h2>
+                <p>Date: {{ screening.screening_date }}</p>
+                <p>Time: {{ screening.screening_time }}</p>
+                <p>Location: {{ screening.location }}</p>
+                <a href="{% url 'book_tickets' screening.movie.id %}">Book Tickets</a>
+            </li>
+        {% empty %}
+            <li>No screenings available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

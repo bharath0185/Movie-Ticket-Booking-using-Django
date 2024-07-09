@@ -1,0 +1,33 @@
+<!-- movie/movie_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ movie.title }} Details</title>
+</head>
+<body>
+    <h1>{{ movie.title }}</h1>
+    <p>Description: {{ movie.description }}</p>
+    <p>Release Date: {{ movie.release_date }}</p>
+    
+    <h2>Screenings</h2>
+    {% if screenings %}
+        <ul>
+            {% for screening in screenings %}
+                <li>
+                    <strong>{{ screening.location }}</strong><br>
+                    Date: {{ screening.screening_date }}<br>
+                    Time: {{ screening.screening_time }}
+                    <form action="{% url 'book_tickets' movie.id %}" method="get">
+                        <input type="hidden" name="screening_id" value="{{ screening.id }}">
+                        <button type="submit">Book Tickets</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No screenings available.</p>
+    {% endif %}
+</body>
+</html>

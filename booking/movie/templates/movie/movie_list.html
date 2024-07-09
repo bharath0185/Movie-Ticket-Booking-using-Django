@@ -1,0 +1,16 @@
+<!-- movie/templates/movie/movie_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie List</title>
+</head>
+<body>
+    <h1>Movie List</h1>
+    <ul>
+        {% for movie in movies %}
+        <li><a href="{% url 'movie_detail' movie.id %}">{{ movie.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
